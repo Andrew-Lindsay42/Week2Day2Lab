@@ -26,11 +26,12 @@ class Bus:
         self.passengers = []
 
     def pick_up_from_stop(self, bus_stop):
-
+        got_on = []
         for person in bus_stop.queue:
             if (self.remaining_capacity() > 0 and person.destination == self.destination):
                 self.pick_up(person)
+                got_on.append(person)
                 
-        for person in self.passengers:
+        for person in got_on:
             if person in bus_stop.queue:
                 bus_stop.queue.remove(person)
