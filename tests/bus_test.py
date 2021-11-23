@@ -38,31 +38,33 @@ class TestBus(unittest.TestCase):
 
     # @unittest.skip("Delete this line to run the test")
     def test_can_pick_up_passenger(self):
-        person = Person("Guido van Rossum", 64, 10)
+        person = Person("Guido van Rossum", 64, 10, "Somewhere")
         self.bus.pick_up(person)
         self.assertEqual(1, self.bus.passenger_count())
 
     # @unittest.skip("Delete this line to run the test")
     def test_can_drop_off_passenger(self):
-        person = Person("Guido van Rossum", 64, 10)
+        person = Person("Guido van Rossum", 64, 10, "Somewhere")
         self.bus.pick_up(person)
         self.bus.drop_off(person)
         self.assertEqual(0, self.bus.passenger_count())
 
     # @unittest.skip("Delete this line to run the test")
     def test_can_empty_bus(self):
-        person = Person("Guido van Rossum", 64, 10)
+        person = Person("Guido van Rossum", 64, 10, "Somewhere")
         self.bus.pick_up(person)
         self.bus.empty()
         self.assertEqual(0, self.bus.passenger_count())
 
     # @unittest.skip("Delete this line to run the test")
     def test_can_pick_up_passenger_from_bus_stop(self):
-        person_1 = Person("Guido van Rossum", 64, 10)
-        person_2 = Person("Carol Willing", 50, 20)
+        person_1 = Person("Guido van Rossum", 64, 10, "Ocean Terminal")
+        person_2 = Person("Carol Willing", 50, 20, "Ocean Terminal")
+        person_3 = Person("Andrew", 27, 200000, "Somewhere else")
         bus_stop = BusStop("Waverly Station")
         bus_stop.add_to_queue(person_1)
         bus_stop.add_to_queue(person_2)
+        bus_stop.add_to_queue(person_3)
         self.bus.pick_up_from_stop(bus_stop)
         self.assertEqual(2, self.bus.passenger_count())
-        self.assertEqual(0, bus_stop.queue_length())
+        self.assertEqual(1, bus_stop.queue_length())

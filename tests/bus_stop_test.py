@@ -5,7 +5,7 @@ from src.person import Person
 class TestBusStop(unittest.TestCase):
     def setUp(self):
         self.bus_stop = BusStop("Waverly Station")
-        self.person = Person("Guido van Rossum", 64, 20)
+        self.person = Person("Guido van Rossum", 64, 20, "Somewhere")
 
     # @unittest.skip("Delete this line to run the test")
     def test_bus_stop_has_name(self):
@@ -23,5 +23,5 @@ class TestBusStop(unittest.TestCase):
     # @unittest.skip("Delete this line to run the test")
     def test_can_clear_queue(self):
         self.bus_stop.add_to_queue(self.person)
-        self.bus_stop.clear()
+        self.bus_stop.remove_from_queue(self.person)
         self.assertEqual(0, self.bus_stop.queue_length())
