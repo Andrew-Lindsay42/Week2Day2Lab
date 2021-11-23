@@ -1,6 +1,6 @@
 import unittest
 from src.bus import Bus
-# from src.bus_stop import BusStop
+from src.bus_stop import BusStop
 from src.person import Person
 
 class TestBus(unittest.TestCase):
@@ -56,7 +56,7 @@ class TestBus(unittest.TestCase):
         self.bus.empty()
         self.assertEqual(0, self.bus.passenger_count())
 
-    @unittest.skip("Delete this line to run the test")
+    # @unittest.skip("Delete this line to run the test")
     def test_can_pick_up_passenger_from_bus_stop(self):
         person_1 = Person("Guido van Rossum", 64, 10)
         person_2 = Person("Carol Willing", 50, 20)
@@ -65,3 +65,4 @@ class TestBus(unittest.TestCase):
         bus_stop.add_to_queue(person_2)
         self.bus.pick_up_from_stop(bus_stop)
         self.assertEqual(2, self.bus.passenger_count())
+        self.assertEqual(0, bus_stop.queue_length())
