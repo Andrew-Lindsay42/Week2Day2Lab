@@ -28,34 +28,38 @@ class TestBus(unittest.TestCase):
     def test_can_drive(self):
         self.assertEqual("Brum brum", self.bus.drive())
 
-    @unittest.skip("Delete this line to run the test")
+    # @unittest.skip("Delete this line to run the test")
     def test_starts_with_no_passengers(self):
         self.assertEqual(0, self.bus.passenger_count())
 
-    @unittest.skip("Delete this line to run the test")
+    def test_remaining_capacity(self):
+        self.bus.passengers = [1]
+        self.assertEqual(4, self.bus.remaining_capacity())
+
+    # @unittest.skip("Delete this line to run the test")
     def test_can_pick_up_passenger(self):
-        person = Person("Guido van Rossum", 64)
+        person = Person("Guido van Rossum", 64, 10)
         self.bus.pick_up(person)
         self.assertEqual(1, self.bus.passenger_count())
 
-    @unittest.skip("Delete this line to run the test")
+    # @unittest.skip("Delete this line to run the test")
     def test_can_drop_off_passenger(self):
-        person = Person("Guido van Rossum", 64)
+        person = Person("Guido van Rossum", 64, 10)
         self.bus.pick_up(person)
         self.bus.drop_off(person)
         self.assertEqual(0, self.bus.passenger_count())
 
-    @unittest.skip("Delete this line to run the test")
+    # @unittest.skip("Delete this line to run the test")
     def test_can_empty_bus(self):
-        person = Person("Guido van Rossum", 64)
+        person = Person("Guido van Rossum", 64, 10)
         self.bus.pick_up(person)
         self.bus.empty()
         self.assertEqual(0, self.bus.passenger_count())
 
     @unittest.skip("Delete this line to run the test")
     def test_can_pick_up_passenger_from_bus_stop(self):
-        person_1 = Person("Guido van Rossum", 64)
-        person_2 = Person("Carol Willing", 50)
+        person_1 = Person("Guido van Rossum", 64, 10)
+        person_2 = Person("Carol Willing", 50, 20)
         bus_stop = BusStop("Waverly Station")
         bus_stop.add_to_queue(person_1)
         bus_stop.add_to_queue(person_2)
