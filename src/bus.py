@@ -4,3 +4,6 @@ class Bus:
         self.capacity = capacity
         self.destination = destination
         self.price = price
+
+    def drive(self):
+        return "Brum brum"

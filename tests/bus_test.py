@@ -24,7 +24,7 @@ class TestBus(unittest.TestCase):
     def test_has_capacity(self):
         self.assertEqual(5, self.bus.capacity)
 
-    @unittest.skip("Delete this line to run the test")
+    # @unittest.skip("Delete this line to run the test")
     def test_can_drive(self):
         self.assertEqual("Brum brum", self.bus.drive())
 
